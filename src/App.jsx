@@ -1,6 +1,6 @@
-import React from "react";
-import "./App.css";
-import Dashboard from "./components/dashboard/dashboard";
+import React from 'react';
+import './App.css';
+import Dashboard from './components/dashboard/dashboard';
 
 const App = () => {
   return (
