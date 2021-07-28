@@ -1,10 +1,10 @@
 import './App.css';
-import Landing from "./components/landing/landing";
+import Dashboard from "./components/dashboard/dashboard";
 
 const App = () => {
   return (
     <main className="App">
-      <Landing />
+      <Dashboard />
       </main>
   );
 }
