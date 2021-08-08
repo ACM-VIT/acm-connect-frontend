@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
+import { createTheme } from '@material-ui/core';
 import Container from '@material-ui/core/Container';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -15,34 +16,80 @@ import { ReactComponent as Instagram } from '../../images/instagram.svg';
 import { ReactComponent as Medium } from '../../images/medium.svg';
 import { ReactComponent as LinkedIn } from '../../images/linkedin.svg';
 
-const useStyles = makeStyles((theme) => ({
+const theme = createTheme({
+  breakpoints: {
+    values: {
+      xs: 315,
+      sm: 640,
+      md: 768,
+      lg: 1024,
+      xl: 1247,
+    },
+  },
+});
+
+const useStyles = makeStyles((themes) => ({
   root: {
     display: 'flex',
     flexGrow: 1,
+    flexShrink: 1,
     height: 'inherit',
     width: 'inherit',
   },
   spacing: {
-    paddingRight: theme.spacing(1),
+    paddingRight: themes.spacing(1),
   },
-  flex: {
+  flexBox: {
     display: 'flex',
   },
   align: {
     display: 'flex',
     justifyContent: 'flex-end',
   },
+  alignbottom: {
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+  },
+  flex: {
+    display: 'flex',
+    flexDirection: 'row',
+    [theme.breakpoints.down('sm')]: {
+      flexDirection: 'column',
+    },
+  },
+  hiddenMob: {
+    [theme.breakpoints.up('sm')]: {
+      display: 'none',
+    },
+  },
+  hiddenPc: {
+    [theme.breakpoints.down('xs')]: {
+      display: 'none',
+    },
+  },
+  padding5: {
+    paddingBottom: 5,
+  },
+  padding10: {
+    paddingBottom: 12,
+  },
 }));
 
 const footer = () => {
   const classes = useStyles();
   return (
-    <div>
-      <AppBar position="static" style={{ background: '#000' }}>
+    <div className={classes.alignbottom}>
+      {/* Desktop view */}
+      <AppBar
+        className={classes.hiddenPc}
+        position="static"
+        style={{ background: '#000' }}
+      >
         <Container>
           <Toolbar>
             <Link href="https://acmvit.in" target="_blank" rel="noreferrer">
-              <img src={ACMLogo} alt="ACM-logo" />
+              <img src={ACMLogo} alt="ACM Logo" />
             </Link>
             <Icon className={classes.root}>
               <Grid container direction="row" justifyContent="center">
@@ -87,15 +134,95 @@ const footer = () => {
                   <LinkedIn />
                 </Link>
               </Grid>
+            </Icon>
+            <Link
+              className={classes.align}
+              href="https://vit.ac.in"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img src={VITLogo} alt="VIT Logo" />
+            </Link>
+          </Toolbar>
+        </Container>
+      </AppBar>
+
+      {/* Mobile view */}
+      <AppBar
+        className={classes.hiddenMob}
+        position="static"
+        style={{ background: '#000' }}
+      >
+        <Container>
+          <Toolbar className={classes.flex}>
+            <Icon className={classes.root}>
+              <Grid container direction="row" justifyContent="center">
+                <Link
+                  className={classes.spacing}
+                  href="https://www.facebook.com/acmvitvellore/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Facebook />
+                </Link>
+                <Link
+                  className={classes.spacing}
+                  href="https://twitter.com/ACM_VIT"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Twitter />
+                </Link>
+                <Link
+                  className={classes.spacing}
+                  href="https://instagram.com/acmvit"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Instagram />
+                </Link>
+                <Link
+                  className={classes.spacing}
+                  href="https://medium.com/acmvit"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Medium />
+                </Link>
+                <Link
+                  className={classes.spacing}
+                  href="https://www.linkedin.com/company/acm-vit-chapter/mycompany/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <LinkedIn />
+                </Link>
+              </Grid>
+            </Icon>
+            <Grid
+              className={classes.flexBox}
+              container
+              direction="row"
+              justifyContent="space-between"
+              alignItems="flex-end"
+            >
               <Link
-                className={classes.align}
+                className={classes.padding5}
+                href="https://acmvit.in"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img src={ACMLogo} alt="ACM Logo" />
+              </Link>
+              <Link
+                className={classes.padding10}
                 href="https://vit.ac.in"
                 target="_blank"
                 rel="noreferrer"
               >
-                <img src={VITLogo} alt="VIT-logo" />
+                <img src={VITLogo} alt="VIT Logo" />
               </Link>
-            </Icon>
+            </Grid>
           </Toolbar>
         </Container>
       </AppBar>
