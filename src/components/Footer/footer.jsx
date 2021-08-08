@@ -89,7 +89,7 @@ const footer = () => {
         <Container>
           <Toolbar>
             <Link href="https://acmvit.in" target="_blank" rel="noreferrer">
-              <img src={ACMLogo} alt="ACM-logo" />
+              <img src={ACMLogo} alt="ACM Logo" />
             </Link>
             <Icon className={classes.root}>
               <Grid container direction="row" justifyContent="center">
@@ -141,7 +141,7 @@ const footer = () => {
               target="_blank"
               rel="noreferrer"
             >
-              <img src={VITLogo} alt="VIT-logo" />
+              <img src={VITLogo} alt="VIT Logo" />
             </Link>
           </Toolbar>
         </Container>
@@ -212,7 +212,7 @@ const footer = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <img src={ACMLogo} alt="ACM-logo" />
+                <img src={ACMLogo} alt="ACM Logo" />
               </Link>
               <Link
                 className={classes.padding10}
@@ -220,7 +220,7 @@ const footer = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <img src={VITLogo} alt="VIT-logo" />
+                <img src={VITLogo} alt="VIT Logo" />
               </Link>
             </Grid>
           </Toolbar>
