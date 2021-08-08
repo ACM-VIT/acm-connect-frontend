@@ -1,5 +1,4 @@
-import React from 'react';
-
+/* eslint-disable react/jsx-key */
 import './dashboard.css';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -8,6 +7,13 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+
+import Grid from '@material-ui/core/Grid';
+
+import React, { useEffect, useState } from 'react';
+import { Container } from '@material-ui/core';
+
+import NoteCard from './cards';
 
 const UseStyles = makeStyles((theme) => ({
   root: {
@@ -20,8 +26,16 @@ const UseStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
 }));
-const dashboard = () => {
+const Dashboard = () => {
   const classes = UseStyles();
+  const [groups, setGroups] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:8000/groups')
+      .then((res) => res.json())
+      .then((data) => setGroups(data));
+  }, []);
+
   return (
     <div>
       <header className={classes.root}>
@@ -42,8 +56,19 @@ const dashboard = () => {
           </Toolbar>
         </AppBar>
       </header>
+      <main>
+        <Container>
+          <Grid container>
+            {groups.map((group) => (
+              <Grid item xs={12}>
+                <NoteCard group={group} />
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+      </main>
     </div>
   );
 };
 
-export default dashboard;
+export default Dashboard;
