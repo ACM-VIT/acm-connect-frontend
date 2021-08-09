@@ -1,22 +1,21 @@
-.formdiv{
-    padding: 1rem;
+.formdiv {
+  padding: 1rem;
 }
 
-input{
-    width: 75%;
-    padding: 0.5rem;
-    margin-bottom: 0.2rem;  
-    border-radius: 10px; 
-    border: solid #128C7E;
-   
+input {
+  width: 75%;
+  padding: 0.5rem;
+  margin-bottom: 0.2rem;
+  border-radius: 10px;
+  border: solid #128c7e;
 }
 
-input:focus{
-    outline: none;
+input:focus {
+  outline: none;
 }
 
-#grid{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+#grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

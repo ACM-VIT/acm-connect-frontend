@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core';
-import Dashboard from './components/dashboard/dashboard';
+import Dashboard from './components/Dashboard/dashboard';
 import Footer from './components/Footer/footer';
 
 const theme = createMuiTheme({
