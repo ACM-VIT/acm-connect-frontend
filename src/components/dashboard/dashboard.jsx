@@ -13,7 +13,7 @@ import Grid from '@material-ui/core/Grid';
 import React, { useEffect, useState } from 'react';
 import { Container } from '@material-ui/core';
 
-import NoteCard from './cards';
+import NoteCard from './cards/cards';
 
 const UseStyles = makeStyles((theme) => ({
   root: {

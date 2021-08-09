@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import Card from '@material-ui/core/Card';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import CardHeader from '@material-ui/core/CardHeader';
-import Editform from './form';
-import EditButton from './edit';
+import Editform from '../form/form';
+import EditButton from '../edit/edit';
 import './cards.css';
 
 const divStyle = {
