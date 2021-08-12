@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     height: 'inherit',
     width: 'inherit',
+    bottom: theme.spacing(4),
   },
   spacing: {
     paddingRight: theme.spacing(1),
