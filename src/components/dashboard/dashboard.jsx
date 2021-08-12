@@ -14,6 +14,7 @@ import React, { useEffect, useState } from 'react';
 import { Container } from '@material-ui/core';
 
 import NoteCard from './cards/cards';
+import Footer from '../Footer/footer';
 
 const UseStyles = makeStyles((theme) => ({
   root: {
@@ -67,6 +68,7 @@ const Dashboard = () => {
           </Grid>
         </Container>
       </main>
+      <Footer />
     </div>
   );
 };
