@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -67,6 +68,31 @@ export default function FormDialog() {
     setOpen(false);
   };
 
+  const [name, setName] = useState('');
+  const [maxLimit, setmaxLimit] = useState('');
+  const [currentCount, setCurrentCount] = useState('');
+  const [joiningLink, setJoiningLink] = useState('');
+  const [allowMore, setAllowMore] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(name);
+    axios
+      .post('http://localhost:3001/data', {
+        name,
+        maxLimit,
+        currentCount,
+        joiningLink,
+        allowMore,
+      })
+      .then((res) => {
+        console.log(res.response);
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
+  };
+
   return (
     <div>
       <Fab
@@ -89,10 +115,20 @@ export default function FormDialog() {
         }}
       >
         <DialogContent>
-          <form action="/data" method="POST">
+          <form
+            onSubmit={(e) => {
+              handleSubmit(e);
+            }}
+          >
             <Grid container style={formStyle}>
               <Grid item xs={12} md={6} id="grid">
-                <input type="text" name="name" placeholder="Group name" />
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Group name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
               </Grid>
 
               <Grid item xs={12} md={6} id="grid">
@@ -100,11 +136,19 @@ export default function FormDialog() {
                   type="text"
                   name="joiningLink"
                   placeholder="Joining Link"
+                  value={joiningLink}
+                  onChange={(e) => setJoiningLink(e.target.value)}
                 />
               </Grid>
 
               <Grid item xs={12} md={6} id="grid">
-                <input type="number" name="maxLimit" placeholder="Max Limit" />
+                <input
+                  type="number"
+                  name="maxLimit"
+                  placeholder="Max Limit"
+                  value={maxLimit}
+                  onChange={(e) => setmaxLimit(e.target.value)}
+                />
               </Grid>
 
               <Grid item xs={12} md={6} id="grid">
@@ -112,6 +156,8 @@ export default function FormDialog() {
                   type="number"
                   name="currentCount"
                   placeholder="Current count"
+                  value={currentCount}
+                  onChange={(e) => setCurrentCount(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12} md={6} id="grid" style={{ color: 'white' }}>
@@ -119,9 +165,11 @@ export default function FormDialog() {
               </Grid>
               <Grid item xs={12} md={6} id="grid">
                 <Switch
-                  name="allow_more"
+                  name="allowMore"
                   inputProps={{ 'aria-label': 'secondary checkbox' }}
                   color="primary"
+                  checked={allowMore}
+                  onChange={(e) => setAllowMore(e.target.checked)}
                 />
               </Grid>
             </Grid>

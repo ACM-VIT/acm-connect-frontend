@@ -1,3 +1,4 @@
+import axios from 'axios';
 /* eslint-disable react/jsx-key */
 import './dashboard.css';
 import { makeStyles } from '@material-ui/core/styles';
@@ -33,10 +34,33 @@ const Dashboard = () => {
   const [groups, setGroups] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:8000/groups')
-      .then((res) => res.json())
-      .then((data) => setGroups(data));
+    axios
+      .get('http://localhost:3001/display', {
+        headers: {
+          'content-type': 'application/json',
+        },
+      })
+      .then((response) => {
+        console.log(response);
+        const something = response.data;
+        console.log(typeof something);
+        console.log(something.arr);
+        setGroups(something.arr);
+      })
+      .catch((error) => console.error(`Error: ${error}`));
   }, []);
+
+  // useEffect(() => {
+  //   fetch('http://localhost:8000/groups')
+  //     .then((res) =>
+  //       // console.log(res);
+  //       res.json()
+  //     )
+  //     .then((data) =>
+  //       // console.log(typeof data);
+  //       setGroups(data)
+  //     );
+  // }, []);
 
   return (
     <div>
@@ -61,6 +85,17 @@ const Dashboard = () => {
       <main>
         <Container>
           <Grid container>
+            {/* for (const group in groups)
+            {
+              <Grid item xs={12}>
+                <NoteCard group={group} />
+              </Grid>
+            } */}
+            {/* {Object.entries(groups).map((group) => (
+              <Grid item xs={12}>
+                <NoteCard group={group} />
+              </Grid>
+            ))} */}
             {groups.map((group) => (
               <Grid item xs={12}>
                 <NoteCard group={group} />
