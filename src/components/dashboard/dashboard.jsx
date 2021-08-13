@@ -15,6 +15,7 @@ import { Container } from '@material-ui/core';
 
 import NoteCard from './cards/cards';
 import Footer from '../Footer/footer';
+import Dialog from './dialog/dialog';
 
 const UseStyles = makeStyles((theme) => ({
   root: {
@@ -68,6 +69,7 @@ const Dashboard = () => {
           </Grid>
         </Container>
       </main>
+      <Dialog />
       <Footer />
     </div>
   );
