@@ -91,6 +91,7 @@ export default function FormDialog() {
       .catch((error) => {
         console.log(error.response);
       });
+    window.location.href = '/';
   };
 
   return (

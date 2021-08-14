@@ -28,6 +28,7 @@ function Form() {
       .catch((error) => {
         console.log(error.response);
       });
+    window.location.href = '/';
   };
   return (
     <form
@@ -53,13 +54,6 @@ function Form() {
             value={currentCount}
             onChange={(e) => setcurrentCount(e.target.value)}
           />
-        </Grid>
-        <Grid item xs={12} md={2} id="grid">
-          {/* <Switch
-            name="checkedA"
-            inputProps={{ 'aria-label': 'secondary checkbox' }}
-            color="primary"
-          /> */}
         </Grid>
         <Grid item xs={12} md={2} id="grid">
           <Button
