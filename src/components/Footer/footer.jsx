@@ -48,10 +48,6 @@ const useStyles = makeStyles((themes) => ({
   },
   alignFooter: {
     width: '100%',
-    //  position: 'absolute',
-    [theme.breakpoints.down('md')]: {
-      // paddingTop: '14rem',
-    },
   },
   flex: {
     display: 'flex',
@@ -68,7 +64,7 @@ const useStyles = makeStyles((themes) => ({
     },
   },
   hiddenPc: {
-    position: 'absolute',
+    position: 'fixed',
     bottom: 0,
     [theme.breakpoints.down('xs')]: {
       display: 'none',
