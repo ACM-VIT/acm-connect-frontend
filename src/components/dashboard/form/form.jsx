@@ -18,13 +18,16 @@ function Form() {
     e.preventDefault();
     console.log(currentCount);
     axios
-      .post(
-        'http://localhost:3001/update', // add id
-        {
-          currentCount,
-        }
-      )
-      .catch((error) => console.error(`Error: ${error}`));
+      .post('http://localhost:3001/update', {
+        name,
+        currentCount,
+      })
+      .then((res) => {
+        console.log(res.response);
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
   };
   return (
     <form
@@ -52,11 +55,11 @@ function Form() {
           />
         </Grid>
         <Grid item xs={12} md={2} id="grid">
-          <Switch
+          {/* <Switch
             name="checkedA"
             inputProps={{ 'aria-label': 'secondary checkbox' }}
             color="primary"
-          />
+          /> */}
         </Grid>
         <Grid item xs={12} md={2} id="grid">
           <Button
