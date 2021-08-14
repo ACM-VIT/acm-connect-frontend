@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import { createTheme, ThemeProvider } from '@material-ui/core';
 import Dashboard from './components/dashboard/dashboard';
+import Landing from './components/Landing/landing';
 import Footer from './components/Footer/footer';
 
 const theme = createTheme({
@@ -25,7 +26,8 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        <Dashboard />
+        {/* <Dashboard /> */}
+        <Landing />
       </div>
     </ThemeProvider>
   );
