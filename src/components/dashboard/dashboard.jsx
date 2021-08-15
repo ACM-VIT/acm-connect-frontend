@@ -2,6 +2,7 @@ import axios from 'axios';
 /* eslint-disable react/jsx-key */
 import './dashboard.css';
 import { makeStyles } from '@material-ui/core/styles';
+import { useLocation } from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -32,22 +33,34 @@ const UseStyles = makeStyles((theme) => ({
 const Dashboard = () => {
   const classes = UseStyles();
   const [groups, setGroups] = useState([]);
-
+  const path = useLocation();
   useEffect(() => {
-    axios
-      .get('http://localhost:3001/display', {
-        headers: {
-          'content-type': 'application/json',
-        },
-      })
-      .then((response) => {
-        console.log(response);
-        const something = response.data;
-        console.log(typeof something);
-        console.log(something.arr);
-        setGroups(something.arr);
-      })
-      .catch((error) => console.error(`Error: ${error}`));
+    const token = path.search.slice(7);
+    if (path.search.substring(1, 6) === 'token') {
+      sessionStorage.setItem('TK', token);
+    }
+    if (
+      sessionStorage.getItem('TK') === null ||
+      sessionStorage.getItem('TK') === ''
+    ) {
+      window.location.href = '/';
+    } else {
+      axios
+        .get('http://localhost:3001/display', {
+          headers: {
+            'content-type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((response) => {
+          console.log(response);
+          const something = response.data;
+          console.log(typeof something);
+          console.log(something.arr);
+          setGroups(something.arr);
+        })
+        .catch((error) => console.error(`Error: ${error}`));
+    }
   }, []);
 
   // useEffect(() => {

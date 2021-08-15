@@ -68,7 +68,7 @@ const useStyles = makeStyles((themes) => ({
     },
   },
   hiddenPc: {
-    position: 'absolute',
+    position: 'fixed',
     bottom: 0,
     [theme.breakpoints.down('xs')]: {
       display: 'none',

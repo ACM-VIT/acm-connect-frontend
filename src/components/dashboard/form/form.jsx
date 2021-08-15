@@ -14,14 +14,30 @@ const formStyle = {
 function Form() {
   const [name, setName] = useState('');
   const [currentCount, setcurrentCount] = useState('');
+  const token = sessionStorage.getItem('Token');
+  // if (
+  //   sessionStorage.getItem('Token') === null ||
+  //   sessionStorage.getItem('Token') === ''
+  // ) {
+  //   window.location.href = '/';
+  // }
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(currentCount);
     axios
-      .post('http://localhost:3001/update', {
-        name,
-        currentCount,
-      })
+      .post(
+        'http://localhost:3001/update',
+        {
+          name,
+          currentCount,
+        },
+        {
+          headers: {
+            'content-type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
       .then((res) => {
         console.log(res.response);
       })
@@ -41,7 +57,7 @@ function Form() {
           <input
             type="text"
             name="name"
-            placeholder="name"
+            placeholder="current name"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />

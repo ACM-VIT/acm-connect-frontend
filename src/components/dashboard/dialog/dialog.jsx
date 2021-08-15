@@ -18,6 +18,17 @@ const useStyles = makeStyles((theme) => ({
     bottom: '6rem',
     right: theme.spacing(6),
     position: 'fixed',
+    [theme.breakpoints.down('sm')]: {
+      margin: '0.25rem',
+      right: '0',
+    },
+    [theme.breakpoints.up('md')]: {
+      bottom: '4rem',
+      right: '2rem',
+    },
+    [theme.breakpoints.up('lg')]: {
+      bottom: '5rem',
+    },
   },
   confirm: {
     background: '#128C7E',
@@ -74,17 +85,33 @@ export default function FormDialog() {
   const [joiningLink, setJoiningLink] = useState('');
   const [allowMore, setAllowMore] = useState(false);
 
+  // const token = sessionStorage.getItem('Token');
+  // if (
+  //   sessionStorage.getItem('Token') === null ||
+  //   sessionStorage.getItem('Token') === ''
+  // ) {
+  //   window.location.href = '/';
+  // }
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(name);
     axios
-      .post('http://localhost:3001/data', {
-        name,
-        maxLimit,
-        currentCount,
-        joiningLink,
-        allowMore,
-      })
+      .post(
+        'http://localhost:3001/data',
+        {
+          name,
+          maxLimit,
+          currentCount,
+          joiningLink,
+          allowMore,
+        },
+        {
+          headers: {
+            'content-type': 'application/json',
+            // Authorization: `Bearer ${token}`,
+          },
+        }
+      )
       .then((res) => {
         console.log(res.response);
       })
@@ -102,6 +129,7 @@ export default function FormDialog() {
         aria-label="add"
         className={classes.fab}
         onClick={handleClickOpen}
+        id="fab"
       >
         <AddIcon />
       </Fab>

@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import { createTheme, ThemeProvider } from '@material-ui/core';
 import Dashboard from './components/dashboard/dashboard';
-import Footer from './components/Footer/footer';
-
+import Landing from './components/Landing/landing';
 const theme = createTheme({
   palette: {
     primary: {
@@ -25,7 +25,9 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        <Dashboard />
+        <Route path="/" exact component={Landing} />
+        <Route path="/dashboard" component={Dashboard} />
+        {/* <Dashboard /> */}
       </div>
     </ThemeProvider>
   );
