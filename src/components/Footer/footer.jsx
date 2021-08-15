@@ -48,7 +48,7 @@ const useStyles = makeStyles((themes) => ({
   },
   alignFooter: {
     width: '100%',
-    //  position: 'absolute',
+    // position: 'absolute',
     [theme.breakpoints.down('md')]: {
       // paddingTop: '14rem',
     },

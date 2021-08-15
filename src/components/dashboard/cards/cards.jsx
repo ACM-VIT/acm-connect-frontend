@@ -10,6 +10,8 @@ const divStyle = {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
+  background: '#2D3134',
+  color: '#FFFFFF',
 };
 
 const normalise = (value) => ((value - 0) * 100) / (240 - 0);
@@ -19,9 +21,9 @@ function Cards({ group }) {
 
   return (
     <div className="cardContainer">
+      {showEditButton && <Editform group={group} />}
       <Card style={divStyle}>
         <CardHeader title={group.name} />
-
         <EditButton
           onAdd={() => setShowEditButton(!showEditButton)}
           showAdd={showEditButton}
@@ -33,7 +35,6 @@ function Cards({ group }) {
         value={normalise(group.currentCount)}
         color="primary"
       />
-      {showEditButton && <Editform group={group} />}
     </div>
   );
 }

@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'fixed',
   },
   confirm: {
-    background: '#128C7E',
+    background: '#25D366',
     border: 0,
     borderRadius: 3,
     color: 'white',

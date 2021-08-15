@@ -66,7 +66,7 @@ const Dashboard = () => {
     <div>
       <header className={classes.root}>
         <AppBar position="static">
-          <Toolbar style={{ background: '#128C7E' }}>
+          <Toolbar style={{ background: '#075E54' }}>
             <IconButton
               edge="start"
               className={classes.menuButton}
