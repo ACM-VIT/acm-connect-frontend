@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
@@ -12,7 +13,6 @@ const useStyles = makeStyles((theme) => ({
   header: {
     color: '#fff',
     fontWeight: 600,
-    fontFamily: 'Helvetica Neue',
     padding: '15px 0px 0px 50px',
     [theme.breakpoints.down('sm')]: {
       display: 'flex',
@@ -36,7 +36,6 @@ const useStyles = makeStyles((theme) => ({
   text1: {
     color: '#fff',
     fontWeight: 600,
-    fontFamily: 'Helvetica Neue',
     fontSize: 48,
     [theme.breakpoints.down('md')]: {
       fontSize: 45,
@@ -51,8 +50,7 @@ const useStyles = makeStyles((theme) => ({
   text2: {
     color: '#25D366',
     fontWeight: 600,
-    fontFamily: 'Helvetica Neue',
-    paddingLeft: 9,
+    paddingLeft: 10,
     fontSize: 48,
     [theme.breakpoints.down('md')]: {
       fontSize: 45,
@@ -112,6 +110,7 @@ const landing = () => {
           container
           direction="row"
           justifyContent="center"
+          alignItems="center"
         >
           <Typography className={classes.text1}>ACM-VIT</Typography>
           <Typography className={classes.text2}>

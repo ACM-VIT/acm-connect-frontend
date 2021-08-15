@@ -5,22 +5,14 @@
   background-repeat: no-repeat;
 }
 
-@media only screen and (max-width: 1024px) {
-  body {
-  }
-}
-
-@media only screen and (max-width: 768px) {
-  body {
-  }
-}
-
 @media only screen and (max-width: 640px) {
-  body {
+  #background {
+    background-image: url('../../images/bgpad.svg');
   }
 }
 
-@media only screen and (max-width: 315px) {
-  body {
+@media only screen and (max-width: 400px) {
+  #background {
+    background-image: url('../../images/bgmobile.svg');
   }
 }
