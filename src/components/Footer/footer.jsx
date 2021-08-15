@@ -46,10 +46,12 @@ const useStyles = makeStyles((themes) => ({
     display: 'flex',
     justifyContent: 'flex-end',
   },
-  alignbottom: {
-    position: 'absolute',
-    bottom: 0,
+  alignFooter: {
     width: '100%',
+    //  position: 'absolute',
+    [theme.breakpoints.down('md')]: {
+      // paddingTop: '14rem',
+    },
   },
   flex: {
     display: 'flex',
@@ -59,11 +61,15 @@ const useStyles = makeStyles((themes) => ({
     },
   },
   hiddenMob: {
+    position: 'fixed',
+    bottom: 0,
     [theme.breakpoints.up('sm')]: {
       display: 'none',
     },
   },
   hiddenPc: {
+    position: 'fixed',
+    bottom: 0,
     [theme.breakpoints.down('xs')]: {
       display: 'none',
     },
@@ -74,16 +80,19 @@ const useStyles = makeStyles((themes) => ({
   padding10: {
     paddingBottom: 12,
   },
+  bottom: {
+    bottom: 0,
+  },
 }));
 
 const footer = () => {
   const classes = useStyles();
   return (
-    <div className={classes.alignbottom}>
+    <div className={classes.alignFooter}>
       {/* Desktop view */}
       <AppBar
+        position="relative"
         className={classes.hiddenPc}
-        position="static"
         style={{ background: '#000' }}
       >
         <Container>
@@ -149,8 +158,9 @@ const footer = () => {
 
       {/* Mobile view */}
       <AppBar
+        position="relative"
+        id="container"
         className={classes.hiddenMob}
-        position="static"
         style={{ background: '#000' }}
       >
         <Container>
