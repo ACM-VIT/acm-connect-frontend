@@ -97,7 +97,7 @@ export default function FormDialog() {
     console.log(name);
     axios
       .post(
-        'http://localhost:3001/data',
+        'https://acm-connect.vercel.app/data',
         {
           name,
           maxLimit,

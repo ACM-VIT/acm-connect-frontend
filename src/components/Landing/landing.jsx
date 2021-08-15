@@ -18,13 +18,15 @@ const useStyles = makeStyles((theme) => ({
       display: 'flex',
       justifyContent: 'center',
       padding: '0px 0px 0px 0px',
-      marginTop: '20px',
+      marginTop: '0px',
+      paddingTop: '2rem',
     },
     [theme.breakpoints.down('xs')]: {
       display: 'flex',
       justifyContent: 'center',
       padding: '0px 0px 0px 0px',
-      marginTop: '20px',
+      marginTop: '0px',
+      paddingTop: '2rem',
     },
   },
   flex: {
@@ -92,10 +94,10 @@ const landing = () => {
   const classes = useStyles();
   const loginHandler = (event) => {
     event.preventDefault();
-    window.open('http://localhost:3001/auth/google', '_self');
+    window.open('https://acm-connect.vercel.app/auth/google', '_self');
   };
   return (
-    <div>
+    <div id="background">
       <Typography className={classes.header} variant="h5">
         WhatsApp Group Manager
       </Typography>

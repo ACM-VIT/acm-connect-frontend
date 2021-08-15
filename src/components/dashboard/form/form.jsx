@@ -26,7 +26,7 @@ function Form() {
     console.log(currentCount);
     axios
       .post(
-        'http://localhost:3001/update',
+        'https://acm-connect.vercel.app/update',
         {
           name,
           currentCount,

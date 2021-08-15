@@ -34,8 +34,10 @@ const Dashboard = () => {
   const classes = UseStyles();
   const [groups, setGroups] = useState([]);
   const path = useLocation();
+  console.log(path);
   useEffect(() => {
     const token = path.search.slice(7);
+    console.log(token);
     if (path.search.substring(1, 6) === 'token') {
       sessionStorage.setItem('TK', token);
     }
@@ -46,7 +48,7 @@ const Dashboard = () => {
       window.location.href = '/';
     } else {
       axios
-        .get('http://localhost:3001/display', {
+        .get('https://acm-connect.vercel.app/display', {
           headers: {
             'content-type': 'application/json',
             Authorization: `Bearer ${token}`,
@@ -62,6 +64,11 @@ const Dashboard = () => {
         .catch((error) => console.error(`Error: ${error}`));
     }
   }, []);
+  const logout = () => {
+    console.log('logout');
+    sessionStorage.removeItem('TK');
+    window.location.href = '/';
+  };
 
   // useEffect(() => {
   //   fetch('http://localhost:8000/groups')
@@ -91,7 +98,9 @@ const Dashboard = () => {
             <Typography variant="h6" className={classes.title}>
               ACM
             </Typography>
-            <Button color="inherit">Logout</Button>
+            <Button color="inherit" onClick={logout}>
+              Logout
+            </Button>
           </Toolbar>
         </AppBar>
       </header>
