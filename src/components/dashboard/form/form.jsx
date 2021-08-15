@@ -65,11 +65,11 @@ function Form({ group }) {
     >
       <div>
         <Card style={divStyle}>
-          <Grid container style={formStyle}>
-            <Grid item xs={1} id="grid" style={labelStyle}>
+          <Grid container spacing={1} style={formStyle}>
+            <Grid item xs={3} sm={1} md={2} xl={1} id="grid" style={labelStyle}>
               <Typography>Name</Typography>
             </Grid>
-            <Grid item xs={12} md={3} id="grid">
+            <Grid item xs={7} sm={3} md={3} xl={3} id="grid">
               <input
                 type="text"
                 name="name"
@@ -78,10 +78,10 @@ function Form({ group }) {
                 onChange={(e) => setName(e.target.value)}
               />
             </Grid>
-            <Grid item xs={2} id="grid" style={labelStyle}>
+            <Grid item xs={3} sm={3} md={2} xl={2} id="grid" style={labelStyle}>
               <Typography>Current Count</Typography>
             </Grid>
-            <Grid item xs={12} md={3} id="grid">
+            <Grid item xs={7} sm={3} md={3} xl={3} id="grid">
               <input
                 type="number"
                 name="currentCount"
@@ -90,7 +90,7 @@ function Form({ group }) {
                 onChange={(e) => setcurrentCount(e.target.value)}
               />
             </Grid>
-            <Grid item xs={12} md={2} id="grid">
+            <Grid item spacing={2} xs={12} md={12} xl={2} id="grid">
               <Button
                 type="submit"
                 color="primary"
