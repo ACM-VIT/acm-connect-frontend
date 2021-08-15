@@ -3,7 +3,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import Fab from '@material-ui/core/Fab';
 import './edit.css';
 
-function Edit({ onAdd, showAdd, group }) {
+function Edit({ onAdd, group }) {
   return (
     <div>
       <span id="count">{group.currentCount}/240</span>
