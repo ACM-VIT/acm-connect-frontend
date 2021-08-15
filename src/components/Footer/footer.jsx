@@ -100,18 +100,6 @@ const footer = () => {
             <Link href="https://acmvit.in" target="_blank" rel="noreferrer">
               <img src={ACMLogo} alt="ACM Logo" />
             </Link>
-          </Toolbar>
-        </Container>
-      </AppBar>
-
-      {/* Mobile view */}
-      <AppBar
-        className={classes.hiddenMob}
-        position="static"
-        style={{ background: '#000' }}
-      >
-        <Container>
-          <Toolbar className={classes.flex}>
             <Icon className={classes.root}>
               <Grid container direction="row" justifyContent="center">
                 <Link
