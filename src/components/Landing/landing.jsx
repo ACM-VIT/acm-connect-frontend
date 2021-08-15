@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
       fontSize: 40,
     },
     [theme.breakpoints.down('xs')]: {
-      fontSize: 35,
+      fontSize: 30,
     },
   },
   text2: {
@@ -82,7 +82,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 20,
     padding: '5px 55px 5px 55px',
     '&:hover': {
-      backgroundColor: '#16de63',
+      backgroundColor: '#13ed67',
       color: '#fff',
     },
   },
@@ -112,7 +112,11 @@ const landing = () => {
             WhatsApp Group Manager
           </Typography>
         </Grid>
-        <Button className={classes.button} variant="contained">
+        <Button
+          href="http://localhost:3001/auth/google"
+          className={classes.button}
+          variant="contained"
+        >
           Login
         </Button>
       </Grid>
