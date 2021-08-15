@@ -4,7 +4,7 @@ import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
 import Button from '@material-ui/core/Button';
 import './form.css';
 import { Grid } from '@material-ui/core';
-import Switch from '@material-ui/core/Switch';
+import { useLocation } from 'react-router-dom';
 
 const formStyle = {
   marginTop: '1em',
@@ -14,13 +14,9 @@ const formStyle = {
 function Form() {
   const [name, setName] = useState('');
   const [currentCount, setcurrentCount] = useState('');
-  const token = sessionStorage.getItem('Token');
-  // if (
-  //   sessionStorage.getItem('Token') === null ||
-  //   sessionStorage.getItem('Token') === ''
-  // ) {
-  //   window.location.href = '/';
-  // }
+  const token = sessionStorage.getItem('TK');
+  const path = useLocation();
+  const ty = path.search;
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(currentCount);
@@ -34,17 +30,17 @@ function Form() {
         {
           headers: {
             'content-type': 'application/json',
-            Authorization: `Bearer ${token}`,
+            authorization: `Bearer ${token}`,
           },
         }
       )
       .then((res) => {
         console.log(res.response);
+        window.location.href = `/dashboard${ty}`;
       })
       .catch((error) => {
         console.log(error.response);
       });
-    window.location.href = '/';
   };
   return (
     <form

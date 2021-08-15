@@ -11,6 +11,7 @@ import AddIcon from '@material-ui/icons/Add';
 import Switch from '@material-ui/core/Switch';
 import './dialog.css';
 import { Grid } from '@material-ui/core';
+import { useLocation } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   fab: {
@@ -84,11 +85,13 @@ export default function FormDialog() {
   const [currentCount, setCurrentCount] = useState('');
   const [joiningLink, setJoiningLink] = useState('');
   const [allowMore, setAllowMore] = useState(false);
+  const token = sessionStorage.getItem('TK');
+  const path = useLocation();
+  const ty = path.search;
 
-  // const token = sessionStorage.getItem('Token');
   // if (
-  //   sessionStorage.getItem('Token') === null ||
-  //   sessionStorage.getItem('Token') === ''
+  //   sessionStorage.getItem('TK') === null ||
+  //   sessionStorage.getItem('TK') === ''
   // ) {
   //   window.location.href = '/';
   // }
@@ -108,17 +111,17 @@ export default function FormDialog() {
         {
           headers: {
             'content-type': 'application/json',
-            // Authorization: `Bearer ${token}`,
+            authorization: `Bearer ${token}`,
           },
         }
       )
       .then((res) => {
         console.log(res.response);
+        window.location.href = `/dashboard${ty}`;
       })
       .catch((error) => {
         console.log(error.response);
       });
-    window.location.href = '/';
   };
 
   return (

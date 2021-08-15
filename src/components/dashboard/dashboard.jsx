@@ -55,10 +55,7 @@ const Dashboard = () => {
           },
         })
         .then((response) => {
-          console.log(response);
           const something = response.data;
-          console.log(typeof something);
-          console.log(something.arr);
           setGroups(something.arr);
         })
         .catch((error) => console.error(`Error: ${error}`));
@@ -70,31 +67,11 @@ const Dashboard = () => {
     window.location.href = '/';
   };
 
-  // useEffect(() => {
-  //   fetch('http://localhost:8000/groups')
-  //     .then((res) =>
-  //       // console.log(res);
-  //       res.json()
-  //     )
-  //     .then((data) =>
-  //       // console.log(typeof data);
-  //       setGroups(data)
-  //     );
-  // }, []);
-
   return (
     <div>
       <header className={classes.root}>
         <AppBar position="static">
           <Toolbar style={{ background: '#128C7E' }}>
-            <IconButton
-              edge="start"
-              className={classes.menuButton}
-              color="inherit"
-              aria-label="menu"
-            >
-              <MenuIcon />
-            </IconButton>
             <Typography variant="h6" className={classes.title}>
               ACM
             </Typography>
@@ -107,17 +84,6 @@ const Dashboard = () => {
       <main>
         <Container>
           <Grid container>
-            {/* for (const group in groups)
-            {
-              <Grid item xs={12}>
-                <NoteCard group={group} />
-              </Grid>
-            } */}
-            {/* {Object.entries(groups).map((group) => (
-              <Grid item xs={12}>
-                <NoteCard group={group} />
-              </Grid>
-            ))} */}
             {groups.map((group) => (
               <Grid item xs={12}>
                 <NoteCard group={group} />
