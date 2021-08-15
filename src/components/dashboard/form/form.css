@@ -6,8 +6,7 @@ input {
   width: 75%;
   padding: 0.5rem;
   margin-bottom: 0.2rem;
-  border-radius: 10px;
-  border: solid #128c7e;
+  border-radius: 1px;
 }
 
 input:focus {
@@ -18,4 +17,8 @@ input:focus {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.carddiv {
+  margin: 1rem;
 }

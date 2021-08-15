@@ -1,13 +1,14 @@
 import React from 'react';
 import './App.css';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { createTheme, ThemeProvider } from '@material-ui/core';
 import Dashboard from './components/dashboard/dashboard';
 import Landing from './components/Landing/landing';
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#128C7E',
+      main: '#25D366',
+      contrastText: '#fff',
     },
   },
   breakpoints: {

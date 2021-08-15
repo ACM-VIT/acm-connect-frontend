@@ -11,6 +11,8 @@ const divStyle = {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
+  background: '#2D3134',
+  color: '#FFFFFF',
 };
 
 const normalise = (value) => ((value - 0) * 100) / (240 - 0);
