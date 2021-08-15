@@ -22,7 +22,7 @@ function Form() {
     console.log(currentCount);
     axios
       .post(
-        'https://acm-connect.vercel.app/update',
+        process.env.REACT_APP_UPDATE_URL,
         {
           name,
           currentCount,

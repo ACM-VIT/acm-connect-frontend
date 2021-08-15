@@ -48,7 +48,7 @@ const Dashboard = () => {
       window.location.href = '/';
     } else {
       axios
-        .get('https://acm-connect.vercel.app/display', {
+        .get(process.env.REACT_APP_GET_URL, {
           headers: {
             'content-type': 'application/json',
             Authorization: `Bearer ${token}`,

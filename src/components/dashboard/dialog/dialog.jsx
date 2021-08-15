@@ -89,18 +89,12 @@ export default function FormDialog() {
   const path = useLocation();
   const ty = path.search;
 
-  // if (
-  //   sessionStorage.getItem('TK') === null ||
-  //   sessionStorage.getItem('TK') === ''
-  // ) {
-  //   window.location.href = '/';
-  // }
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(name);
     axios
       .post(
-        'https://acm-connect.vercel.app/data',
+        process.env.REACT_APP_ADD_URL,
         {
           name,
           maxLimit,
