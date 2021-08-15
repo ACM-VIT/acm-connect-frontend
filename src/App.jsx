@@ -27,7 +27,6 @@ const App = () => {
       <div className="App">
         <Route path="/" exact component={Landing} />
         <Route path="/dashboard" component={Dashboard} />
-        {/* <Dashboard /> */}
       </div>
     </ThemeProvider>
   );
