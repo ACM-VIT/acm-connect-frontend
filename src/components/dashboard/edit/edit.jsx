@@ -6,7 +6,9 @@ import './edit.css';
 function Edit({ onAdd, group }) {
   return (
     <div>
-      <span id="count">{group.currentCount}/240</span>
+      <span id="count">
+        {group.currentCount}/{group.maxLimit}
+      </span>
       <Fab size="small" color="primary" aria-label="add" id="editicon">
         <EditIcon onClick={onAdd} />
       </Fab>
