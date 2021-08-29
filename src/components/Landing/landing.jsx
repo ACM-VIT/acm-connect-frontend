@@ -93,7 +93,7 @@ const landing = () => {
   const classes = useStyles();
   const loginHandler = (event) => {
     event.preventDefault();
-    window.open('https://acm-connect.vercel.app/auth/google', '_self');
+    window.open(process.env.REACT_APP_AUTH, '_self');
   };
   return (
     <div id="background">
