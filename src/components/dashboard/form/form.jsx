@@ -111,7 +111,7 @@ function Form({ group }) {
                 type="text"
                 name="joiningLink"
                 placeholder="Group Link"
-                value={joiningLink}
+                value={group.joiningLink}
                 onChange={(e) => setJoiningLink(e.target.value)}
                 required
               />
