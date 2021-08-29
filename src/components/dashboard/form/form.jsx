@@ -97,7 +97,7 @@ function Form({ group }) {
                 type="number"
                 name="currentCount"
                 placeholder="Current Count"
-                value={currentCount}
+                value={group.currentCount}
                 onChange={(e) => setcurrentCount(e.target.value)}
                 max={maxLimit}
                 required
@@ -124,7 +124,7 @@ function Form({ group }) {
                 type="number"
                 name="maxLimit"
                 placeholder="Max Count"
-                value={maxLimit}
+                value={group.maxLimit}
                 onChange={(e) => setMaxLimit(e.target.value)}
                 required
               />
