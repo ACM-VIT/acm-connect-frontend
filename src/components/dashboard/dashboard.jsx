@@ -32,12 +32,11 @@ const Dashboard = () => {
   const classes = UseStyles();
   const [groups, setGroups] = useState([]);
   const path = useLocation();
-  console.log(path);
   useEffect(() => {
     const token = path.search.slice(7);
-    console.log(token);
     if (path.search.substring(1, 6) === 'token') {
       sessionStorage.setItem('TK', token);
+      window.history.replaceState(null, null, window.location.pathname);
     }
     if (
       sessionStorage.getItem('TK') === null ||
@@ -45,22 +44,22 @@ const Dashboard = () => {
     ) {
       window.location.href = '/';
     } else {
+      const TK = sessionStorage.getItem('TK');
       axios
         .get(process.env.REACT_APP_GET_URL, {
           headers: {
             'content-type': 'application/json',
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${TK}`,
           },
         })
         .then((response) => {
           const something = response.data;
           setGroups(something.arr);
         })
-        .catch((error) => console.error(`Error: ${error}`));
+        .catch((error) => console.error(error.response.data));
     }
   }, []);
   const logout = () => {
-    console.log('logout');
     sessionStorage.removeItem('TK');
     window.location.href = '/';
   };

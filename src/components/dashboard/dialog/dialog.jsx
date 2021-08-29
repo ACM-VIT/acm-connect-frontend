@@ -10,9 +10,31 @@ import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import Switch from '@material-ui/core/Switch';
 import './dialog.css';
-import { Grid } from '@material-ui/core';
+import { Grid, createTheme, ThemeProvider } from '@material-ui/core';
 import { useLocation } from 'react-router-dom';
 
+const themee = createTheme({
+  overrides: {
+    MuiSwitch: {
+      switchBase: {
+        color: '#25D366',
+      },
+      colorPrimary: {
+        '&$checked': {
+          color: '#25D366',
+        },
+      },
+      track: {
+        opacity: 0.2,
+        backgroundColor: '#fff',
+        '$checked$checked + &': {
+          opacity: 0.7,
+          backgroundColor: '#25D366',
+        },
+      },
+    },
+  },
+});
 const useStyles = makeStyles((theme) => ({
   fab: {
     margin: theme.spacing(1),
@@ -79,6 +101,19 @@ export default function FormDialog() {
   const handleClose = () => {
     setOpen(false);
   };
+  const handlereqClose = () => {
+    if (
+      !(
+        currentCount === '' ||
+        maxLimit === '' ||
+        joiningLink === '' ||
+        // eslint-disable-next-line radix
+        parseInt(currentCount) > parseInt(maxLimit)
+      )
+    ) {
+      setOpen(false);
+    }
+  };
 
   const [name, setName] = useState('');
   const [maxLimit, setmaxLimit] = useState('');
@@ -91,7 +126,6 @@ export default function FormDialog() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(name);
     axios
       .post(
         process.env.REACT_APP_ADD_URL,
@@ -110,12 +144,18 @@ export default function FormDialog() {
         }
       )
       .then((res) => {
-        console.log(res.response);
-        window.location.href = `/dashboard${ty}`;
+        window.location.href = '/dashboard';
       })
-      .catch((error) => {
-        console.log(error.response);
-      });
+      .catch((error) => {});
+    axios
+      .get(process.env.REACT_APP_MEMORY_URL, {
+        headers: {
+          'content-type': 'application/json',
+          authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {})
+      .catch((error) => {});
   };
 
   return (
@@ -151,9 +191,10 @@ export default function FormDialog() {
                 <input
                   type="text"
                   name="name"
-                  placeholder="Group name"
+                  placeholder="Group Name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
+                  required
                 />
               </Grid>
 
@@ -164,6 +205,7 @@ export default function FormDialog() {
                   placeholder="Joining Link"
                   value={joiningLink}
                   onChange={(e) => setJoiningLink(e.target.value)}
+                  required
                 />
               </Grid>
 
@@ -174,6 +216,7 @@ export default function FormDialog() {
                   placeholder="Max Limit"
                   value={maxLimit}
                   onChange={(e) => setmaxLimit(e.target.value)}
+                  required
                 />
               </Grid>
 
@@ -181,22 +224,26 @@ export default function FormDialog() {
                 <input
                   type="number"
                   name="currentCount"
-                  placeholder="Current count"
+                  placeholder="Current Count"
                   value={currentCount}
                   onChange={(e) => setCurrentCount(e.target.value)}
+                  max={maxLimit}
+                  required
                 />
               </Grid>
               <Grid item xs={12} md={6} id="grid" style={{ color: 'white' }}>
-                Accepting respnses?
+                Accepting responses?
               </Grid>
               <Grid item xs={12} md={6} id="grid">
-                <Switch
-                  name="allowMore"
-                  inputProps={{ 'aria-label': 'secondary checkbox' }}
-                  color="primary"
-                  checked={allowMore}
-                  onChange={(e) => setAllowMore(e.target.checked)}
-                />
+                <ThemeProvider theme={themee}>
+                  <Switch
+                    name="allowMore"
+                    inputProps={{ 'aria-label': 'secondary checkbox' }}
+                    color="primary"
+                    checked={allowMore}
+                    onChange={(e) => setAllowMore(e.target.checked)}
+                  />
+                </ThemeProvider>
               </Grid>
             </Grid>
 
@@ -207,7 +254,7 @@ export default function FormDialog() {
             </DialogContentText>
             <DialogActions id="actions">
               <Button
-                onClick={handleClose}
+                onClick={handlereqClose}
                 className={classes.confirm}
                 type="submit"
               >

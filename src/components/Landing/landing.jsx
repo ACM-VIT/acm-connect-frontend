@@ -52,6 +52,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 600,
     paddingLeft: 10,
     fontSize: 48,
+    textAlign: 'center',
     [theme.breakpoints.down('md')]: {
       fontSize: 45,
     },
@@ -60,18 +61,6 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down('xs')]: {
       fontSize: 30,
-    },
-  },
-  marginTop: {
-    marginTop: '11rem',
-    [theme.breakpoints.down('md')]: {
-      marginTop: '15rem',
-    },
-    [theme.breakpoints.down('sm')]: {
-      marginTop: '13rem',
-    },
-    [theme.breakpoints.down('xs')]: {
-      marginTop: '12rem',
     },
   },
   button: {
@@ -84,6 +73,18 @@ const useStyles = makeStyles((theme) => ({
     '&:hover': {
       backgroundColor: '#13ed67',
       color: '#fff',
+    },
+  },
+  hiddenMob: {
+    position: 'fixed',
+    [theme.breakpoints.up('sm')]: {
+      display: 'none',
+    },
+  },
+  hiddenPc: {
+    position: 'fixed',
+    [theme.breakpoints.down('xs')]: {
+      display: 'none',
     },
   },
 }));
@@ -102,16 +103,12 @@ const landing = () => {
       <Grid
         container
         direction="column"
+        spacing={0}
         justifyContent="center"
         alignItems="center"
+        style={{ minHeight: '82vh' }}
       >
-        <Grid
-          className={classes.marginTop}
-          container
-          direction="row"
-          justifyContent="center"
-          alignItems="center"
-        >
+        <Grid container direction="row" justifyContent="center">
           <Typography className={classes.text1}>ACM-VIT</Typography>
           <Typography className={classes.text2}>
             WhatsApp Group Manager

@@ -15,31 +15,27 @@ const divStyle = {
   color: '#FFFFFF',
 };
 
-const normalise = (value) => ((value - 0) * 100) / (240 - 0);
-
 function Cards({ group }) {
   const [showEditButton, setShowEditButton] = useState(false);
-
+  const limit = group.maxLimit;
+  const normalise = (value) => ((value - 0) * 100) / (limit - 0);
   return (
-    <Grid container className="cardContainer">
-      <Grid item md={1} />
-      <Grid item xs={10} md={10}>
-        <Card style={divStyle}>
-          <CardHeader title={group.name} />
+    <Grid className="cardContainer">
+      <Card style={divStyle}>
+        <CardHeader title={group.name} />
 
-          <EditButton
-            onAdd={() => setShowEditButton(!showEditButton)}
-            showAdd={showEditButton}
-            group={group}
-          />
-        </Card>
-        <LinearProgress
-          variant="determinate"
-          value={normalise(group.currentCount)}
-          color="primary"
+        <EditButton
+          onAdd={() => setShowEditButton(!showEditButton)}
+          showAdd={showEditButton}
+          group={group}
         />
-        {showEditButton && <Editform group={group} />}
-      </Grid>
+      </Card>
+      <LinearProgress
+        variant="determinate"
+        value={normalise(group.currentCount)}
+        color="primary"
+      />
+      {showEditButton && <Editform group={group} />}
     </Grid>
   );
 }
