@@ -26,9 +26,9 @@ const divStyle = {
 };
 
 function Form({ group }) {
-  const [joiningLink, setJoiningLink] = useState('');
-  const [currentCount, setcurrentCount] = useState('');
-  const [maxLimit, setMaxLimit] = useState('');
+  const [joiningLink, setJoiningLink] = useState(group.joiningLink);
+  const [currentCount, setcurrentCount] = useState(group.currentCount);
+  const [maxLimit, setMaxLimit] = useState(group.maxLimit);
   const [allowMore, setAllowMore] = useState(true);
   const [name, setName] = useState('');
 
@@ -97,7 +97,7 @@ function Form({ group }) {
                 type="number"
                 name="currentCount"
                 placeholder="Current Count"
-                value={group.currentCount}
+                value={currentCount}
                 onChange={(e) => setcurrentCount(e.target.value)}
                 max={maxLimit}
                 required
@@ -111,7 +111,7 @@ function Form({ group }) {
                 type="text"
                 name="joiningLink"
                 placeholder="Group Link"
-                value={group.joiningLink}
+                value={joiningLink}
                 onChange={(e) => setJoiningLink(e.target.value)}
                 required
               />
@@ -124,7 +124,7 @@ function Form({ group }) {
                 type="number"
                 name="maxLimit"
                 placeholder="Max Count"
-                value={group.maxLimit}
+                value={maxLimit}
                 onChange={(e) => setMaxLimit(e.target.value)}
                 required
               />
