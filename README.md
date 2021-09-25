@@ -25,7 +25,7 @@ Uses axios for fetching and sending data to the server
 
 ## Screenshots
 
-![screenshot](assets/dashboard.jpg) 
+![screenshot](assets/dashboard.JPG) 
 
 
 ---
